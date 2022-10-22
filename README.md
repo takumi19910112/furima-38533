@@ -5,51 +5,58 @@
 | Column                                     | Type       | Options                        |
 | ------------------------------------------ | ---------- | ------------------------------ |
 | nick_name                                  | string     | null: false                    |
-| email                                      | string     | null: false                    |
-| password                                   | string     | null: false                    |
-| date_of_birth (year)                       | string     | null: false                    |
-| date_of_birth (month)                      | string     | null: false                    |
-| date_of_birth (day)                        | string     | null: false                    |
-| first_name(Chinese characters)             | string     | null: false                    |
-| last_name(Chinese characters)              | string     | null: false                    |
-| first_name(Katakana)                       | string     | null: false                    |
-| last_name(Katakana)                        | string     | null: false                    |
+| email                                      | string     | unique: true ,default: ""      |
+| encrypted_password                         | string     | null: false ,default: ""       |
+| birth_day                                  | date       | null: false                    |
+| first_name_chinese_characters              | string     | null: false                    |
+| last_name_chinese_characters               | string     | null: false                    |
+| first_name_katakana                        | string     | null: false                    |
+| last_name_katakana                         | string     | null: false                    |
 ### Association
+- has_many : items                                
+- belongs_to : addresses
 
-- has_many : orders                                
-- has_many : exhibits
 
-## orders テーブル（商品購入機能）
+## addresses テーブル（発送先情報）
 
 | Column                                     | Type       | Options                        |
 | ------------------------------------------ | ---------- | ------------------------------ |
-| nick_name                                  | references | null: false, foreign_key: true |
-| card_information(number)                   | string     | null: false                    |
-| card_information(deadline)                 | string     | null: false                    |
-| card_information(csv)                      | string     | null: false                    |
-| shipping_address(post_code)(add_a_hyphen)  | string     | null: false                    |
-| shipping_address(prefectures)              | string     | null: false                    |
-| shipping_address(municipalities)           | string     | null: false                    |
-| shipping_address(address)                  | string     | null: false                    |
-| shipping_address(building_name)            | string     | null: true                     |
-| phone_number(no hyphen)                    | string     | null: false                    |
+| buyer                                      | references | null: false, foreign_key: true |
+| post_code                                  | string     | null: false                    |
+| prefectures                                | string     | null: false                    |
+| municipalities                             | string     | null: false                    |
+| address                                    | string     | null: false                    |
+| building_name                              | string     | null: true                     |
+| phone_number                               | string     | null: false                    |
 ###  Association
-- has_many : users
-- belongs_to : exhibits
+- has_many : items ,through: :orders
+- has_many : orders
 
-## exhibits テーブル（商品出品）
+
+## orders テーブル（購入履歴）
 
 | Column                                     | Type       | Options                        |
 | ------------------------------------------ | ---------- | ------------------------------ |
-| name                                       | references | null: false, foreign_key: true |
-| product_image                              | text       | null: false                    |
-| product_name                               | string     | null: false                    |
-| product_description                        | string     | null: false                    |
-| product_details(category)                  | string     | null: false                    |
-| product_details(commodity_condition)       | string     | null: false                    |
-| delivery(delivery_charge)                  | string     | null: false                    |
-| delivery(region_of_origin)                 | string     | null: false                    |
-| delivery(days_to_Ship)                     | string     | null: false                    |
-| price                                      | string     | null: false                    |
+| buyer                                      | references | null: false, foreign_key: true |
+| seller                                     | references | null: false, foreign_key: true |
+###  Association
+- belongs_to : addresses
+- belongs_to : items
+
+
+## items テーブル（出品情報）
+
+| Column                                     | Type       | Options                        |
+| ------------------------------------------ | ---------- | ------------------------------ |
+| seller                                     | references | null: false, foreign_key: true |
+| product_name                               | text       | null: false                    |
+| product_description                        | text       | null: false                    |
+| category_id                                | integer    | null: false                    |
+| condition                                  | text       | null: false                    |
+| delivery_charge                            | string     | null: false                    |
+| region_of_origin                           | string     | null: false                    |
+| days_to_ship                               | string     | null: false                    |
+| price                                      | integer    | null: false                    |
 ### Association
-- belongs_to : orders
+- has_many : addresses ,through: :orders
+- has_many : orders
