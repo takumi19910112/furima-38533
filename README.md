@@ -1,62 +1,63 @@
 # テーブル設計
 
-## users テーブル（ユーザー管理）（deviseを使う）
+## users テーブル（ユーザー情報）（deviseを使う）
 
-| Column                                     | Type       | Options                        |
-| ------------------------------------------ | ---------- | ------------------------------ |
-| nick_name                                  | string     | null: false                    |
-| email                                      | string     | unique: true ,default: ""      |
-| encrypted_password                         | string     | null: false ,default: ""       |
-| birth_day                                  | date       | null: false                    |
-| first_name_chinese_characters              | string     | null: false                    |
-| last_name_chinese_characters               | string     | null: false                    |
-| first_name_katakana                        | string     | null: false                    |
-| last_name_katakana                         | string     | null: false                    |
+| Column                                     | Type       | Options                                |
+| ------------------------------------------ | ---------- | -------------------------------------- |
+| nick_name                                  | string     | null: false                            |
+| email                                      | string     | null: false ,unique: true ,default: "" |
+| encrypted_password                         | string     | null: false ,default: ""               |
+| birth_day                                  | date       | null: false                            |
+| first_name                                 | string     | null: false                            |
+| last_name                                  | string     | null: false                            |
+| read_first                                 | string     | null: false                            |
+| read_last                                  | string     | null: false                            |
 ### Association
-- has_many : items                                
-- belongs_to : addresses
+- has_many : items     
+- has_many : orders                         
 
 
-## addresses テーブル（発送先情報）
 
-| Column                                     | Type       | Options                        |
-| ------------------------------------------ | ---------- | ------------------------------ |
-| buyer                                      | references | null: false, foreign_key: true |
-| post_code                                  | string     | null: false                    |
-| prefectures                                | string     | null: false                    |
-| municipalities                             | string     | null: false                    |
-| address                                    | string     | null: false                    |
-| building_name                              | string     | null: true                     |
-| phone_number                               | string     | null: false                    |
+## addresses テーブル（受け取り先情報）
+
+| Column                                     | Type       | Options                                |
+| ------------------------------------------ | ---------- | -------------------------------------- |
+| user                                       | references | null: false, foreign_key: true         |
+| post_code                                  | string     | null: false                            |
+| prefectures                                | string     | null: false                            |
+| municipalities                             | string     | null: false                            |
+| address                                    | string     | null: false                            |
+| building_name                              | string     | null: true                             |
+| phone_number                               | string     | null: false                            |
 ###  Association
-- has_many : items ,through: :orders
-- has_many : orders
+- belongs_to : orders
 
 
 ## orders テーブル（購入履歴）
 
-| Column                                     | Type       | Options                        |
-| ------------------------------------------ | ---------- | ------------------------------ |
-| buyer                                      | references | null: false, foreign_key: true |
-| seller                                     | references | null: false, foreign_key: true |
+| Column                                     | Type       | Options                                |
+| ------------------------------------------ | ---------- | -------------------------------------- |
+| user                                       | references | null: false, foreign_key: true         |
+| product_name                               | references | null: false, foreign_key: true         |
 ###  Association
-- belongs_to : addresses
+- belongs_to : users
 - belongs_to : items
+- has_one : orders
 
 
 ## items テーブル（出品情報）
 
-| Column                                     | Type       | Options                        |
-| ------------------------------------------ | ---------- | ------------------------------ |
-| seller                                     | references | null: false, foreign_key: true |
-| product_name                               | text       | null: false                    |
-| product_description                        | text       | null: false                    |
-| category_id                                | integer    | null: false                    |
-| condition                                  | text       | null: false                    |
-| delivery_charge                            | string     | null: false                    |
-| region_of_origin                           | string     | null: false                    |
-| days_to_ship                               | string     | null: false                    |
-| price                                      | integer    | null: false                    |
+| Column                                     | Type       | Options                                |
+| ------------------------------------------ | ---------- | -------------------------------------- |
+| user                                       | references | null: false, foreign_key: true         |
+| product_name                               | references | null: false, foreign_key: true         |
+| product_description                        | text       | null: false                            |
+| category_id                                | integer    | null: false                            |
+| condition_id                               | integer    | null: false                            |
+| contribution_id                            | integer    | null: false                            |
+| area_id                                    | integer    | null: false                            |
+| day_id                                     | integer    | null: false                            |
+| price                                      | integer    | null: false                            |
 ### Association
-- has_many : addresses ,through: :orders
-- has_many : orders
+- has_one : orders
+- belongs_to : users
