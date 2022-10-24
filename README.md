@@ -22,15 +22,14 @@
 
 | Column                                     | Type       | Options                                |
 | ------------------------------------------ | ---------- | -------------------------------------- |
-| user                                       | references | null: false, foreign_key: true         |
 | post_code                                  | string     | null: false                            |
-| prefectures                                | string     | null: false                            |
+| prefecture_id                              | integer    | null: false                            |
 | municipalities                             | string     | null: false                            |
 | address                                    | string     | null: false                            |
-| building_name                              | string     | null: true                             |
+| building_name                              | string     | null: false                            |
 | phone_number                               | string     | null: false                            |
 ###  Association
-- belongs_to : orders
+- belongs_to : order
 
 
 ## orders テーブル（購入履歴）
@@ -38,11 +37,11 @@
 | Column                                     | Type       | Options                                |
 | ------------------------------------------ | ---------- | -------------------------------------- |
 | user                                       | references | null: false, foreign_key: true         |
-| product_name                               | references | null: false, foreign_key: true         |
+| item                                       | references | null: false, foreign_key: true         |
 ###  Association
-- belongs_to : users
-- belongs_to : items
-- has_one : orders
+- belongs_to : user
+- belongs_to : item
+- has_one : order
 
 
 ## items テーブル（出品情報）
@@ -50,14 +49,14 @@
 | Column                                     | Type       | Options                                |
 | ------------------------------------------ | ---------- | -------------------------------------- |
 | user                                       | references | null: false, foreign_key: true         |
-| product_name                               | references | null: false, foreign_key: true         |
+| product_name                               | string     | null: false, foreign_key: true         |
 | product_description                        | text       | null: false                            |
 | category_id                                | integer    | null: false                            |
 | condition_id                               | integer    | null: false                            |
 | contribution_id                            | integer    | null: false                            |
-| area_id                                    | integer    | null: false                            |
+| prefecture_id                              | integer    | null: false                            |
 | day_id                                     | integer    | null: false                            |
 | price                                      | integer    | null: false                            |
 ### Association
-- has_one : orders
-- belongs_to : users
+- has_one : order
+- belongs_to : user
