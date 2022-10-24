@@ -22,6 +22,7 @@
 
 | Column                                     | Type       | Options                                |
 | ------------------------------------------ | ---------- | -------------------------------------- |
+| order                                      | references | null: false, foreign_key: true         |  
 | post_code                                  | string     | null: false                            |
 | prefecture_id                              | integer    | null: false                            |
 | municipalities                             | string     | null: false                            |
@@ -29,7 +30,7 @@
 | building_name                              | string     |                                        |
 | phone_number                               | string     | null: false                            |
 ###  Association
-- has_one : order
+- belongs_to : order
 
 
 ## orders テーブル（購入履歴）
@@ -41,7 +42,7 @@
 ###  Association
 - belongs_to : user
 - belongs_to : item
-- has_one : address
+- belongs_to : address
 
 
 ## items テーブル（出品情報）
