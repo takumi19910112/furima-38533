@@ -41,7 +41,7 @@
 ###  Association
 - belongs_to : user
 - belongs_to : item
-- has_one : order
+- has_one : address
 
 
 ## items テーブル（出品情報）
