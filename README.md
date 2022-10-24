@@ -26,10 +26,10 @@
 | prefecture_id                              | integer    | null: false                            |
 | municipalities                             | string     | null: false                            |
 | address                                    | string     | null: false                            |
-| building_name                              | string     | null: false                            |
+| building_name                              | string     |                                        |
 | phone_number                               | string     | null: false                            |
 ###  Association
-- belongs_to : order
+- has_one : order
 
 
 ## orders テーブル（購入履歴）
@@ -49,7 +49,7 @@
 | Column                                     | Type       | Options                                |
 | ------------------------------------------ | ---------- | -------------------------------------- |
 | user                                       | references | null: false, foreign_key: true         |
-| product_name                               | string     | null: false, foreign_key: true         |
+| product_name                               | string     | null: false                            |
 | product_description                        | text       | null: false                            |
 | category_id                                | integer    | null: false                            |
 | condition_id                               | integer    | null: false                            |
