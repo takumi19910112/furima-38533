@@ -8,7 +8,7 @@ class User < ApplicationRecord
     validates :first_name
     validates :last_name
   end
-  with_options presence: true, format: { with: /\A[ァ-ヶ]+\z/, message: 'カタカナを使用してください' } do
+  with_options presence: true, format: { with:/\A[ァ-ヶー]+\z/ , message: 'カタカナを使用してください' } do
     validates :read_first
     validates :read_last
   end
@@ -16,6 +16,6 @@ class User < ApplicationRecord
   validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください' 
 
 
-   has_many :items
-   has_many :orders
+   # has_many :items
+   # has_many :orders
 end
