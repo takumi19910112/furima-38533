@@ -46,6 +46,11 @@ RSpec.describe User, type: :model do
           @user.valid?
           expect(@user.errors.full_messages).to include "Read first can't be blank"
         end
+        it "カナ名前が空では登録できない" do
+          @user.read_last = ''
+          @user.valid?
+          expect(@user.errors.full_messages).to include "Read last can't be blank"
+        end
         it "重複したメールアドレスは登録できない" do
           @user.save
           another_user = FactoryBot.build(:user)
