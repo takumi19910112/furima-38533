@@ -48,9 +48,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Prefecture can't be blank"
       end
       it '発送目安がないと出品出来ない' do
-        @item.day_id = ''
+        @item.delivery_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "Day can't be blank"
+        expect(@item.errors.full_messages).to include "Delivery can't be blank"
       end
       it '価格が300円未満だと出品できない' do
         @item.price = '150'
@@ -88,9 +88,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Contribution can't be blank"
       end
       it 'アクティブハッシュで実装した項目については、未選択項目が選択されると保存できない' do
-        @item.day_id = 1
+        @item.delivery_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Day can't be blank"
+        expect(@item.errors.full_messages).to include "Delivery can't be blank"
       end
       it '画像が添付されていないと出品出来ない' do
         @item.image = nil

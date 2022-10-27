@@ -5,7 +5,7 @@ class Item < ApplicationRecord
       presence: { messasge: "can't be blank"}
 
  
-  validates :category_id, :condition_id, :contribution_id, :prefecture_id, :day_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :category_id, :condition_id, :contribution_id, :prefecture_id, :delivery_id, numericality: { other_than: 1 , message: "can't be blank"}
 
   has_one_attached :image
   belongs_to :user
@@ -14,6 +14,6 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :condition
   belongs_to :contribution
-  belongs_to :day
+  belongs_to :delivery
   belongs_to :prefecture
 end
