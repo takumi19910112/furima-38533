@@ -67,7 +67,41 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "Price is not a number"
       end
-      
+      it 'アクティブハッシュで実装した項目については、未選択項目が選択されると保存できない' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Prefecture can't be blank"
+      end
+      it 'アクティブハッシュで実装した項目については、未選択項目が選択されると保存できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Category can't be blank"
+      end
+      it 'アクティブハッシュで実装した項目については、未選択項目が選択されると保存できない' do
+        @item.condition_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Condition can't be blank"
+      end
+      it 'アクティブハッシュで実装した項目については、未選択項目が選択されると保存できない' do
+        @item.contribution_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Contribution can't be blank"
+      end
+      it 'アクティブハッシュで実装した項目については、未選択項目が選択されると保存できない' do
+        @item.day_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Day can't be blank"
+      end
+      it '画像が添付されていないと出品出来ない' do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Image can't be blank"
+      end
+      it 'ユーザーが紐づいていないと出品出来ない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include "User must exist"
+      end
 
     end
   end
