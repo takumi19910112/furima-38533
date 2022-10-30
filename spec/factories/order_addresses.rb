@@ -5,7 +5,7 @@ FactoryBot.define do
     municipalities {"博多区"}
     address {"月隈"}
     building_name {"なんちゃらビル"}
-    phone_number {18052727349}
+    phone_number {"18052727349"}
    
     token{"fjr8ghkd5ntible3flai4jege0fe234"}
    
