@@ -18,7 +18,6 @@ class OrdersController < ApplicationController
 
   def create
    
-    @items = Item.includes(:user).order("created_at DESC")
     @order_address = OrderAddress.new(order_params)
    if @order_address.valid?
     pay_item
