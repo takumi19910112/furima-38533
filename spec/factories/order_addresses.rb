@@ -4,7 +4,7 @@ FactoryBot.define do
     prefecture_id {2}
     municipalities {"博多区"}
     address {"月隈"}
-    building_name {"くまくま"}
+    building_name {"なんちゃらビル"}
     phone_number {"08052727349"}
     user_id {2}
     item_id {2}
