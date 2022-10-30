@@ -32,7 +32,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Post code 数字は半角で3桁ハイフン4桁で入力してください")
       end
       it '都道府県を選択していないと保存できないこと' do
-        @order_address.prefecture_id = ""
+        @order_address.prefecture_id = 1
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -51,13 +51,18 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
-      it '電話番号は10桁以上11桁以内の半角数値以外保存できないこと' do
+      it '電話番号は9桁以下では登録できないこと' do
         @order_address.phone_number = 1001
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number is invalid")
       end
-      it '電話番号は10桁以上11桁以内の半角数値以外保存できないこと' do
+      it '電話番号は12桁以上では登録できないこと' do
         @order_address.phone_number = 100000000001
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      it '電話番号は半角数字以外が含まれている場合、登録できないこと' do
+        @order_address.phone_number = "100-111111"
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number is invalid")
       end

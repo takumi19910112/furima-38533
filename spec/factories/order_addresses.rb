@@ -9,7 +9,6 @@ FactoryBot.define do
    
     token{"fjr8ghkd5ntible3flai4jege0fe234"}
    
-    association :user 
-    association :item
+   
   end
 end

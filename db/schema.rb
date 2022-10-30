@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2022_10_28_160717) do
     t.string "municipalities", null: false
     t.string "building_name"
     t.string "phone_number", null: false
+    t.string "address", null: false
     t.index ["order_id"], name: "index_addresses_on_order_id"
   end
 
