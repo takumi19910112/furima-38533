@@ -5,11 +5,11 @@ FactoryBot.define do
     municipalities {"博多区"}
     address {"月隈"}
     building_name {"なんちゃらビル"}
-    phone_number {"08052727349"}
-    user_id {2}
-    item_id {2}
-    token{}
+    phone_number {18052727349}
+   
+    token{"fjr8ghkd5ntible3flai4jege0fe234"}
    
     association :user 
+    association :item
   end
 end

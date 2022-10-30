@@ -4,6 +4,7 @@ class OrderAddress
   attr_accessor :post_code,:prefecture_id,:municipalities,:address,:building_name,:phone_number,:user_id,:item_id,:token
 
   validates :token, presence: true
+  validates :user_id, :item_id, presence: true
 
   validates :prefecture_id,numericality: { other_than: 1 , message: "can't be blank"}
   with_options presence: true, format: { with: /\A\d{3}[-]\d{4}\z/, message: '数字は半角で3桁ハイフン4桁で入力してください' } do
