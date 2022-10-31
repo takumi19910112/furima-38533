@@ -14,7 +14,7 @@ end
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
-    Address.create(post_code: post_code, prefecture_id: prefecture_id, municipalities: municipalities, phone_number: phone_number, building_name: building_name, order_id: order.id)
+    Address.create(post_code: post_code, prefecture_id: prefecture_id, municipalities: municipalities, phone_number: phone_number, building_name: building_name, order_id: order.id,address: address)
   end
 
 
