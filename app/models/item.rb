@@ -16,4 +16,5 @@ class Item < ApplicationRecord
   belongs_to :contribution
   belongs_to :delivery
   belongs_to :prefecture
+  has_many :comments
 end
