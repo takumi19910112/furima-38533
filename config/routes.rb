@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to:"items#index"
   resources :items do
     resources :orders
-     resources :comments
+      resources :comments
   end
 end
