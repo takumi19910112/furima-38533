@@ -48,3 +48,6 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+production:
+  <<: *default
+  password: <%= ENV['FURIMA_38533_DATABASE_PASSWORD'] %>
