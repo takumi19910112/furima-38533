@@ -82,16 +82,15 @@
   </div>
   <%# /商品の概要 %>
 
-  <div class="comment-box">
-   <div id="comments">
-   <div class="comment-form">
+    <div class="comment-form">
   <% if user_signed_in? %>
-    <%= form_with model: [@item, @comment], id: "comment-form" do |f| %>
-      <%= f.text_area :text, class: "comment-text"%>
+    <%= form_with model: [@item, @comment],local: true, id: "comment-form" do |f| %>
+      <%= f.text_area :text , class: "comment-text"%>
       <%= f.submit "コメントをする", class: "comment-submit" %>
     <% end %>
   <% end %>
 </div>
+  <div id="comments">
   <h4>＜コメント一覧＞</h4>
     <% @item.comments.each do |comment| %>
       <div class="comment">
@@ -100,7 +99,7 @@
       </div>
     <% end %>
 </div>
-  </div>
+
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品
