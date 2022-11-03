@@ -50,4 +50,4 @@ test:
 #
 production:
   <<: *default
-  password: <%= ENV['FURIMA_38533_DATABASE_PASSWORD'] %>
+
