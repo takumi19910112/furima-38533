@@ -90,10 +90,7 @@
 }
 
 /* /商品画像 */
-.preview-size{
-  height: 150px;
-  width: auto;
-}
+
 /* 商品名と商品説明 */
 .new-items {
   padding: 2vh 0;
