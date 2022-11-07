@@ -1,10 +1,5 @@
 /* border-bottom: 1px solid #eee; */
-.image-delete-button {
-  text-align: center;
-  border: solid 1px;
-  cursor: pointer;
-  margin-bottom: 5px;
-}
+
 
 .items-sell-contents {
   background-color: #f5f5f5;
@@ -95,10 +90,7 @@
 }
 
 /* /商品画像 */
-.preview-size{
-  height: 150px;
-  width: auto;
-}
+
 /* 商品名と商品説明 */
 .new-items {
   padding: 2vh 0;
