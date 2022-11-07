@@ -52,10 +52,10 @@
 # server "example.com",
 #   user: "user_name",
 #   roles: %w{web app},
-   ssh_options: {
-     user: "user", # overrides user setting above
-     keys: %w(/home/user_name/.ssh/takkumi19910112.pem),
-     forward_agent: false,
+#   ssh_options: {
+#     user: "user_name", # overrides user setting above
+#     keys: %w(/home/user_name/.ssh/id_rsa),
+#     forward_agent: false,
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
