@@ -26,7 +26,7 @@ set :keep_releases, 5
 
 set :branch, "main"
 
-set :scm, :git 
+
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
