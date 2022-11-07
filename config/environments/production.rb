@@ -112,5 +112,4 @@ Rails.application.configure do
   ActionCable.server.config.disable_request_forgery_protection = true
   config.action_cable.url = "ws://3.115.228.184/cable" 
   config.action_cable.allowed_request_origins = ['http://3.115.228.184']
-  server '3.115.228.184', user: 'ec2-user', roles: %w{app db web}
 end
